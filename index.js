@@ -1,4 +1,3 @@
-const Port = process.env.PORT;
 const express = require("express");
 const app = express();
 const http = require("http");
@@ -281,6 +280,6 @@ app.post("/messages", async (req, res) => {
   }
 });
 
-server.listen(Port, () => {
+server.listen(process.env.PORT, () => {
   console.log("server running on " + Port);
 });
