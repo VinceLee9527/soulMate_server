@@ -4,8 +4,6 @@ const app = express();
 const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-const path = require("path");
-const staticPath = "./";
 
 const { MongoClient } = require("mongodb");
 const { v4: uuidv4 } = require("uuid");
@@ -19,8 +17,6 @@ const uri = process.env.URI;
 
 app.use(cors());
 app.use(express.json());
-
-app.use(serve(path.join(__dirname, staticPath)));
 
 //socket io chat
 const io = new Server(server, {
