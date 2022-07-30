@@ -3,7 +3,7 @@ const port = process.env.PORT || 8000;
 const app = express();
 const http = require("http");
 const server = http.createServer(app);
-const { Server } = require("socket.io");
+// const { Server } = require("socket.io");
 
 const { MongoClient } = require("mongodb");
 const { v4: uuidv4 } = require("uuid");
@@ -19,12 +19,12 @@ app.use(cors());
 app.use(express.json());
 
 //socket io chat
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  },
-});
+// const io = new Server(server, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST"],
+//   },
+// });
 
 // let users = [];
 
