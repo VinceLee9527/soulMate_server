@@ -281,6 +281,22 @@ app.post("/messages", async (req, res) => {
   }
 });
 
+//get user
+app.get("/users", async (req, res) => {
+  const client = new MongoClient(uri);
+
+  try {
+    await client.connect();
+    const database = client.db("app-data");
+    const users = database.collection("users");
+
+    const returnedUser = await users.toArray();
+    res.send(returnedUser);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 server.listen(port, () => {
   console.log("server running on " + port);
 });
