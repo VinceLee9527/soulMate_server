@@ -11,7 +11,7 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 
-require("dotenv").config;
+require("dotenv").config({ path: "./.env" });
 
 const uri = process.env.URI;
 
@@ -283,6 +283,7 @@ app.post("/messages", async (req, res) => {
 
 //get user
 app.get("/users", async (req, res) => {
+  console.log(uri);
   const client = new MongoClient(uri);
 
   try {
@@ -290,7 +291,7 @@ app.get("/users", async (req, res) => {
     const database = client.db("app-data");
     const users = database.collection("users");
 
-    const returnedUser = await users.toArray();
+    const returnedUser = await users.find().toArray();
     res.send(returnedUser);
   } catch (error) {
     console.log(error);
