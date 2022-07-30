@@ -8,9 +8,8 @@ const { Server } = require("socket.io");
 const { MongoClient } = require("mongodb");
 const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
 const bcrypt = require("bcrypt");
-
-import cors from "cors";
 
 require("dotenv").config;
 
@@ -20,12 +19,12 @@ app.use(cors());
 app.use(express.json());
 
 //socket io chat
-// const io = new Server(server, {
-//   cors: {
-//     origin: "http://localhost:3000",
-//     methods: ["GET", "POST"],
-//   },
-// });
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
 
 // let users = [];
 
