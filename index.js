@@ -284,7 +284,10 @@ app.post("/messages", async (req, res) => {
 //get user
 app.get("/users", async (req, res) => {
   console.log(uri);
-  const client = new MongoClient(uri);
+  const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 
   try {
     await client.connect();
